@@ -236,23 +236,31 @@
 				 	}
 
 				 	var randomhonap = Math.round(Math.random() * 2);
-				 	var honapok = ['09','10','11'];
+				 	var honapok = ['01','02','03'];
 
-				 	if ( honapok[randomhonap] == '11' && randomnap >= '16') {
+				 	if ( honapok[randomhonap] == '03' && randomnap >= '17' ) {
 				 		bad++;
-				 		var randomnap = Math.round(Math.random() * 14) + 1;
+				 		var randomnap = Math.round(Math.random() * 15) + 1;
 					 		if ( randomnap.toString().length < 2) {
 					 		var randomnap = '0'+randomnap;
 					 		}
 				 	}
 
-				 	if ( honapok[randomhonap] == '09') {
+				 	if ( honapok[randomhonap] == '02' && randomnap >= '29') {
+				 		bad++;
+				 		var randomnap = Math.round(Math.random() * 16) + 1;
+					 		if ( randomnap.toString().length < 2) {
+					 		var randomnap = '0'+randomnap;
+					 		}
+				 	}
 
-				 		if ( randomnap <= '14' || randomnap == '31') {
+				 	if ( honapok[randomhonap] == '01') {
+
+				 		if ( randomnap <= '12' || randomnap == '32') {
 					 		bad++;
 
-					 		var felhonap = Math.round(Math.random() * 15);
-					 		var szeptembernap = ['15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30'];
+					 		var felhonap = Math.round(Math.random() * 19);
+					 		var szeptembernap = ['12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
 
 					 		var randomnap =  szeptembernap[felhonap];
 				 		}
