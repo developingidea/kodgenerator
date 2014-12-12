@@ -1,0 +1,143 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Random String Generátor</title>
+  <script type="text/javascript">
+        function savefile(saveid){
+        if(!window.Blob){alert('Your browser does not support HTML5 "Blob.');
+        } else {
+        var txtwrt = document.getElementById(saveid).value;
+        if(document.getElementById('dos').checked == true) txtwrt = txtwrt.replace(/\n/g,'\r\n');
+        var textblob = new Blob([txtwrt],{type:'text/plain'});
+        var saveas =  document.getElementById('saveas').value;
+        var dwnlnk = document.createElement('a');
+        dwnlnk.download = saveas;
+        dwnlnk.innerHTML = "Download File";
+        if (window.webkitURL != null){
+        dwnlnk.href = window.webkitURL.createObjectURL(textblob);
+        } else {
+        dwnlnk.href = window.URL.createObjectURL(textblob);
+        dwnlnk.onclick = destce;
+        dwnlnk.style.display = 'none';
+        document.body.appendChild(dwnlnk);}
+        dwnlnk.click();}}
+        function destce(event){document.body.removeChild(event.target);}
+
+        function cleartext(){
+        document.getElementById('input').value = '';
+        document.getElementById('output').value = '';}
+
+        function radstr(){
+        var howmany = document.getElementById('howmany').value;
+        var input = document.getElementById('input').value;
+        input = input.replace(/\r/g,'');
+        if(document.getElementById('in_nl').checked == false) {var inputdelimiter = document.getElementById('inputdelimiter').value; input = input.replace(/\n/g,inputdelimiter);}
+        if(document.getElementById('in_nl').checked == true) inputdelimiter = '\n';
+        input_arr = input.split(inputdelimiter);
+        input_arr_len = input_arr.length;
+        var stringlength = document.getElementById('stringlength').value;
+        var output = new Array();
+        var output2 = new Array();
+        if(document.getElementById('set_nl').checked == false) var setdelimiter = document.getElementById('setdelimiter').value; else setdelimiter = '\n';
+        var elementdelimiter = document.getElementById('elementdelimiter').value;
+        var prefix = document.getElementById('prefix').value;
+        var suffix = document.getElementById('suffix').value;
+        var belong2 = 'pbclevtug grkgzrpunavp.pbz';
+        for (y=0; y<howmany; y++){
+        for (x=0; x<stringlength; x++){
+        output[x] = input_arr[Math.floor(Math.random()*input_arr_len)];}
+        output2[y] = prefix + output.join(elementdelimiter) + suffix;}
+        output2 = output2.join(setdelimiter);
+        document.getElementById('output').value = output2;}
+
+        function SelectAll(id){
+        document.getElementById(id).focus();
+        document.getElementById(id).select();}
+
+        function wrapis(itis,boxid){
+        var area = document.getElementById(boxid);
+        area.setAttribute('wrap',itis);
+        var newarea = area.cloneNode(true);
+        newarea.value = area.value;
+        area.parentNode.replaceChild(newarea,area);}
+  </script>
+    <style type="text/css">
+    body {margin:0px; padding:0px; font-family:arial; font-size:14px; line-height:1; background: #ecf0f1; text-shadow: 1px 1px 0px rgba(255,255,255,0.5);}
+    h1 {font-size:26px; font-weight:bold; margin:50px 0px 20px 0px; padding:0px; }
+    textarea {display:block; margin:0px; padding:3px 0px 0px 3px; overflow:scroll; font-family:arial; font-size:14px; line-height:1.2; border:1px solid #000000; outline:none; resize:none;}
+    input {outline:none; resize:none;}
+    input[type='text'] {width:auto; height:auto; margin:3px 0px 3px 0px; padding:0px 2px 0px 2px; font-family:arial; font-size:14px; color:#000000; background-color:#FFFFFF; border:1px solid #000000;}
+    input[type='radio'] {margin:0px; padding:0px; font-size:14px;}
+    input[type='checkbox'] {margin:0px; padding:0px; font-size:14px;}
+    input[type='button']::-moz-focus-inner {border:0;}
+    input[type='button'] {width:auto; height:auto; margin:3px 0px 3px 0px; padding:0px 4px 0px 4px; font-family:arial; font-size:14px; border:1px solid #000000; background-color:#F0F0F0; cursor:default;}
+    input[type='button']:hover {border-color:#0000FF; background-color:#CCFFFF;}
+    #menu {position:absolute; z-index:-1; left:0px; top:0px; width:0px; height:0%; margin:0px; overflow:auto; line-height:1.2; background-color:#E3DFC7;}
+    a.nav {display:block; margin:0px; padding:0px; text-decoration:none; background-color:#E3DFC7;}
+    a.navhover {display:block; margin:0px; padding:0px; text-decoration:none; background-color:#FFFFFF;}
+    #toolpadding {padding:10px 10px 10px 10px;}
+    #tool { width:800px !important; margin: auto; padding:0px;}
+    textarea {overflow: auto}
+    input[type=text] {line-height: 30px;padding-left: 10px;}
+    input[type=button] {background: #34495e;width: 200px;text-align: center;line-height: 32px;margin-top: 10px;font-weight: bold;border: none;outline: none;transition: 0.6s;cursor: pointer;font-size: 15px;color: #fff;}
+    input[type=button]:hover {background: #2c3e50;transition: 0.2s;color: #fff;}
+    input[type=button]:active { content: 'Még töltődöm! Légy türelmes!'; background: url(data:image/gif;base64,R0lGODlhKwALAPEAAM3c7FNTU5CYoFNTUyH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAKwALAAACMoSOCMuW2diD88UKG95W88uF4DaGWFmhZid93pq+pwxnLUnXh8ou+sSz+T64oCAyTBUAACH5BAkKAAAALAAAAAArAAsAAAI9xI4IyyAPYWOxmoTHrHzzmGHe94xkmJifyqFKQ0pwLLgHa82xrekkDrIBZRQab1jyfY7KTtPimixiUsevAAAh+QQJCgAAACwAAAAAKwALAAACPYSOCMswD2FjqZpqW9xv4g8KE7d54XmMpNSgqLoOpgvC60xjNonnyc7p+VKamKw1zDCMR8rp8pksYlKorgAAIfkECQoAAAAsAAAAACsACwAAAkCEjgjLltnYmJS6Bxt+sfq5ZUyoNJ9HHlEqdCfFrqn7DrE2m7Wdj/2y45FkQ13t5itKdshFExC8YCLOEBX6AhQAADsAAAAAAAAAAAA=) #ecf0f1 no-repeat;transition: 0.2s;color: #fff;/*box-shadow: 0 0 10px rgba(0,100,200,0.7)*/; color: transparent;}
+    input[type=radio] {margin: 10px;
+    }
+    </style>
+     <script type="text/javascript">
+     var autohgt = 'yes';
+     function specialonsizefunction(){
+     document.getElementById('output').style.height = (document.getElementById('middiv').clientHeight - 5) + 'px';}
+     </script>
+     <body spellcheck="false">
+               <div id="tool" style="width: 100%; height: 720px; top: 27px;">
+                     <div id="toolpadding">
+                             <div id="topdiv">
+                                   <h1>Random String Generátor</h1>
+                       <div style="padding-bottom:3px;">
+                                   <div style="display: none">
+                                    <input type="text" id="inputdelimiter" value="" style="width:40px;" onclick="document.getElementById(&#39;in_nl&#39;).checked=false;">
+                                     <input type="checkbox" id="in_nl" onclick="document.getElementById(&#39;inputdelimiter&#39;).value=&#39;&#39;;">
+                                    
+                                   </div>
+                                   Karakter a string előtt:
+                                    <input type="text" id="prefix" value="" style="width:20px;">
+                                    Karakter a string után:
+                                   <input type="text" id="suffix" value="" style="width:20px;">
+                                   Karakter az elemek közé:
+                                   <input type="text" id="elementdelimiter" value="" style="width:20px;"><br>
+                                   Karakter a stringek közé, sortörés nélkül:
+                                   <input type="text" id="setdelimiter" value="" style="width:45px;" onfocus="document.getElementById(&#39;set_nl&#39;).checked=false">
+                                   <br><br>
+                                   Stringek száma: <input type="text" id="howmany" maxlength="10" value="10" style="width:100px;">
+                                   Karakterek hossza: <input type="text" id="stringlength" maxlength="9" value="9" style="width:100px;">
+                                   </div>
+                                   <textarea id="input" style="width:99%; margin-top: 15px;height:20px;" wrap="off">ACFHKMN2346789WX</textarea>
+                                   <div style="padding:3px 0px 3px 0px;">
+                                   <div ></div>
+                                   <input type="button" value="Generál" onclick="radstr();"><br><br>
+                                   <div style="display: none">
+                                   <input type="checkbox" id="set_nl" onclick="document.getElementById(&#39;setdelimiter&#39;).value=&#39;&#39;" checked="">NL
+                                   </div>
+                                   </div>
+                                   <div id="middiv" style="height: 214px;">
+                                   <textarea id="output" style="width: 99%; height: 200px;" wrap="off"></textarea>
+                                   </div>
+                                   <div id="btmdiv">
+                                   <div style="padding:3px 0px 0px 0px;">
+                                   <input type="button" value="Mentés másként" onclick="savefile(&#39;output&#39;);">
+                                   <input type="text" id="saveas" value="numbers.csv" style="width:90px;"><br><br>
+                                   Unix<input type="radio" name="sfrmt" id="unix" checked=""><input type="radio" name="sfrmt" id="dos">Dos <br>
+                                   <div style="display: none">
+                                   <input type="radio" name="radbtn" onclick="wrapis(&#39;soft&#39;,&#39;input&#39;);"><input type="radio" name="radbtn" onclick="wrapis(&#39;off&#39;,&#39;input&#39;);" checked=""> <br>
+                                   <input type="radio" name="radbtn2" onclick="wrapis(&#39;soft&#39;,&#39;output&#39;);"><input type="radio" name="radbtn2" onclick="wrapis(&#39;off&#39;,&#39;output&#39;);" checked="">
+                                   </div></div>
+                                   </div>
+                                   </div>
+                                   </div>
+                                   <script type="text/javascript">document.write(endwrite);</script>
+                                    <h1>Terminál duplikált törlése / sorbarendezés</h1>
+                                    <code>sort -u <span>numbers</span>.csv -o <span>numbers</span>-final.csv</code>
+</body></html>
