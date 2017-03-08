@@ -139,6 +139,23 @@
                                    </div>
                                    </div>
                                    <script type="text/javascript">document.write(endwrite);</script>
-                                    <h1>Terminál duplikált törlése / sorbarendezés</h1>
+                                    <h1>Terminál kódok</h1><br>
+                                    <b>Sorbarendezés és egyformák kiszedése:</b> <br><br>
                                     <code>sort -u <span>numbers</span>.csv -o <span>numbers</span>-final.csv</code>
+                                    <br><br><br><br>
+                                    <b>Sorbarendezés és egyformák kiszedése:</b> <br><br>
+                                    <code>
+                                        sort uj-kodok.csv > uj-kodok.csv.sorted <br>
+                                        sort regi-kodok+uj-kodok.csv > regi-kodok+uj-kodok.csv.sorted <br> <br>
+
+                                        diff uj-kodok.csv.sorted regi-kodok+uj-kodok.csv.sorted | grep "<" | sed 's/^< *//' > files.diff <br>
+                                        diff uj-kodok.csv.sorted files.diff | grep "<" | sed 's/^< *//' > files.same.sorted
+                                    </code>
+                                    <br><br><br><br>
+                                    <b>Kódok összekeverés:</b> <br><br>
+                                    <code>
+                                        gshuf kodok.csv -o kodok-shuf.csv
+                                    </code>
+                                    <br> <br><br>
+                                    <br> <br><br>
 </body></html>
